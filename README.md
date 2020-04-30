@@ -4,15 +4,15 @@
     <img src="https://img.shields.io/github/workflow/status/grintex/app-covid-api/Main?label=Build&logo=github&logoColor=white&style=for-the-badge" title="Status do build">
 </p>
 
-# API Coronavírus Chapecó
+## API app COVID Chapecó
 
 Esse repositório contém o código-fonte da API REST utilizada pelo aplicativo móvel *Coronavírus Chapecó* ([repositório Github](https://github.com/grintex/app-covid)), desenvolvido no contexto do [Edital Nº 259/GR/UFFS/2020](https://www.uffs.edu.br/atos-normativos/edital/gr/2020-0259) da [Universidade Federal da Fronteira Sul](https://www.uffs.edu.br), campus Chapecó/SC. O projeto de extensão envolve os cursos de Medicina e Ciência da Computação da UFFS campus Chapecó, sob coordenação da profa. Thais Nascimento Helou (Medicina).
 
-*NOTA:* a API REST desse repositório está disponível em [app-covid.api.uffs.cc](https://app-covid.api.uffs.cc).
+**DEMO:** esse repositório está disponível em produção online em [app-covid.api.uffs.cc](https://app-covid.api.uffs.cc).
 
 > **IMPORTANTE:** esse repositório é dedicado exclusivamente à API REST. Se você está procurando o aplicativo, veja esse [repositório Github](https://github.com/grintex/app-covid).
 
-### Descrição
+### Descrição do projeto
 
 A proposta busca a orientação e informação da população sobre medidas de prevenção contra a infecção pelo novo Coronavírus. Será direcionada tanto a casos suspeitos quanto a indivíduos assintomáticos através de aplicativo elaborado por professores e discentes da UFFS do curso de Medicina em parceria com o curso de Ciências da Computação. A divulgação do aplicativo ocorrerá através de banners a serem colocados nas Unidades Básicas de Saúde, Unidades de Pronto Atendimento e Hospital Regional do Oeste, assim como através de consulta de orientação telefônica também realizada por discentes da UFFS e profissionais de saúde do município de Chapecó. Espera-se que com isso a população esteja mais informada e consciente sobre as medidas de prevenção necessárias rente à pandemia do novo Coronavírus, com o objetivo de diminuir a transmissão e evitar novos casos da doença. EDITAL Nº 259/GR/UFFS/2020 (projeto EXT-2020-0041)
 
@@ -45,6 +45,8 @@ Os endpoints disponíveis no momento são os seguintes:
 Informações sobre casos de COVID-19 em Chapecó e SC.
 
 - [URL teste](https://app-covid.api.uffs.cc/v0/stats)
+
+___
 
 ### Desenvolvimento
 
