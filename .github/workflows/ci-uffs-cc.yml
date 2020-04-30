@@ -47,6 +47,8 @@ jobs:
         password: ${{ secrets.CI_PASSWORD }}
         script: |
           mkdir -p ${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}
+    - name: Clean vendor files
+      run: rm -rf vendor
     - name: Deploy app via SSH
       uses: garygrossgarten/github-action-scp@release
       with:
@@ -55,6 +57,16 @@ jobs:
         host: ${{ env.BUILD_HOST }}
         username: ${{ secrets.CI_USERNAME }}
         password: ${{ secrets.CI_PASSWORD }}
+    - name: Restore vendor folder on build server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ env.BUILD_HOST }}
+        username: ${{ secrets.CI_USERNAME }}
+        password: ${{ secrets.CI_PASSWORD }}
+        script: |
+          cd ${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}
+          composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+          echo 'DB_DATABASE=${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}/database/database.sqlite' >> .env
     - name: Summary
       run: |
         echo "Summary:"
