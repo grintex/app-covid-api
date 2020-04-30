@@ -1,56 +1,89 @@
 <p align="center">
     <img width="400" height="200" src=".github/logo.png" title="Logo do projeto"><br />
     <img src="https://img.shields.io/maintenance/yes/2020?style=for-the-badge" title="Status do projeto">
-    <img src="https://img.shields.io/github/workflow/status/grintex/template/Main?label=Build&logo=github&logoColor=white&style=for-the-badge" title="Status do build">
+    <img src="https://img.shields.io/github/workflow/status/grintex/app-covid-api/Main?label=Build&logo=github&logoColor=white&style=for-the-badge" title="Status do build">
 </p>
 
-# Título
+# API Coronavírus Chapecó
 
-Coloque uma descrição do projeto aqui. Geralmente essa descrição tem de duas a três linhas de tamanho. Ela deve dar uma visão geral sobre o que é o projeto, ex.: tecnologia usada, filosofia de existência, qual problema tenta-se resolver, etc. Se você precisa escrever mais que 3 linhas de descrição, crie subseções.
+Esse repositório contém o código-fonte da API REST utilizada pelo aplicativo móvel *Coronavírus Chapecó* ([repositório Github](https://github.com/grintex/app-covid)), desenvolvido no contexto do [Edital Nº 259/GR/UFFS/2020](https://www.uffs.edu.br/atos-normativos/edital/gr/2020-0259) da [Universidade Federal da Fronteira Sul](https://www.uffs.edu.br), campus Chapecó/SC. O projeto de extensão envolve os cursos de Medicina e Ciência da Computação da UFFS campus Chapecó, sob coordenação da profa. Thais Nascimento Helou (Medicina).
 
-> **IMPORTANTE:** coloque aqui alguma mensagem que é muito relevante aos usuários do projeto, se for o caso.
+*NOTA:* a API REST desse repositório está disponível em [app-covid.api.uffs.cc](https://app-covid.api.uffs.cc).
 
-## Features
+> **IMPORTANTE:** esse repositório é dedicado exclusivamente à API REST. Se você está procurando o aplicativo, veja esse [repositório Github](https://github.com/grintex/app-covid).
 
-Aqui você pode colocar uma screenshot do produto resultante desse projeto. Descreva também suas features usando uma lista:
+### Descrição
 
-* Fácil integração;
-* Poucas dependências;
-* Utiliza um template lindo para organizar o `README`;
-* Possui ótima documentação e testes.
+A proposta busca a orientação e informação da população sobre medidas de prevenção contra a infecção pelo novo Coronavírus. Será direcionada tanto a casos suspeitos quanto a indivíduos assintomáticos através de aplicativo elaborado por professores e discentes da UFFS do curso de Medicina em parceria com o curso de Ciências da Computação. A divulgação do aplicativo ocorrerá através de banners a serem colocados nas Unidades Básicas de Saúde, Unidades de Pronto Atendimento e Hospital Regional do Oeste, assim como através de consulta de orientação telefônica também realizada por discentes da UFFS e profissionais de saúde do município de Chapecó. Espera-se que com isso a população esteja mais informada e consciente sobre as medidas de prevenção necessárias rente à pandemia do novo Coronavírus, com o objetivo de diminuir a transmissão e evitar novos casos da doença. EDITAL Nº 259/GR/UFFS/2020 (projeto EXT-2020-0041)
 
-## Começando
+### Equipe
 
-### 1. Primeiro passo para começar
+**Coordenação e colaboração:**
+* Thais Nascimento Helou - _Coordenadora do projeto, Professora Medicina, UFFS Chapecó/SC - [thais.helou@uffs.edu.br](mailto:thais.helou@uffs.edu.br)_
+* Fernando Bevilacqua - _Professor Ciência da Computação, UFFS Chapecó/SC - [fernando.bevilacqua@uffs.edu.br](mailto:fernando.bevilacqua@uffs.edu.br)_
 
-Geralmente o primeiro passo para começar é instalar dependências para rodar o projeto. Rode:
+**Criação e desenvolvimento:**
+
+* Brenda Thomas (Medicina, UFFS Chapecó/SC)
+* Rafael Fagundes (Medicina, UFFS Chapecó/SC)
+* Jean Carlo Hilger (Ciência da Computação, UFFS Chapecó/SC)
+* Junior Vitor Ramisch (Ciência da Computação, UFFS Chapecó/SC)
+* Mateus Koppe (Ciência da Computação, UFFS Chapecó/SC)
+
+**Suporte:**
+
+* [Grintex](https://grintex.uffs.cc) - Grupo de Inovação Tecnológica Experimental da UFFS
+
+## Informações para desenvolvedores
+
+### Endpoints disponíveis
+
+Os endpoints disponíveis no momento são os seguintes:
+
+#### `/v0/stats` (GET)
+
+Informações sobre casos de COVID-19 em Chapecó e SC.
+
+- [URL teste](https://app-covid.api.uffs.cc/v0/stats)
+
+### Desenvolvimento
+
+#### 1. Pré-requisitos
+
+Você precisa ter as [ferramentas](https://laravel.com/docs/7.x/installation) relacionadas ao [Laravel](https://laravel.com) instaladas.
+
+
+#### 2. Preparar o projeto
+
+Clone o projeto:
 
 ```
-apt get install dependencia
+git clone https://github.com/grintex/app-covid-api && cd app-covid-api
 ```
 
-Recomenda-se que cada comando seja colocado em uma linha diferente:
+Crie um arquivo configuração local
 
 ```
-apt get install outra-coisa
+cp .env.example .env
 ```
 
-Dessa forma os usuários podem copiar e colar sem ler as documentação (que é o que geralmente acontece).
+Edite o arquivo `.env` com os dados do seu ambiente.
 
-### 2. Outro(s) passo(s)
 
-Geralmente os próximos passos ensinam como instalar e configurar o projeto para uso/desenvolvimento. Rode:
+#### 3. Teste
+
+Para testar a API localmente, rode:
 
 ```
-git clone https://github.com/grintex/template template
+php artisan serve
 ```
+
+O browser abrirá apontando para o endereço [http://localhost:8000/](http://localhost:8000/) para você acessar a api.
+
 
 ## Contribua
 
-Sua ajuda é muito bem-vinda, independente da forma! Confira o arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para conhecer todas as formas de contribuir com o projeto. Por exemplo, [sugerir uma nova funcionalidade](https://github.com/grintex/template/issues/new?assignees=&labels=&template=feature_request.md&title=), [reportar um problema/bug](https://github.com/grintex/template/issues/new?assignees=&labels=bug&template=bug_report.md&title=), [enviar um pull request](https://github.com/grintex/hacktoberfest/blob/master/docs/tutorial-pull-request.md), ou simplemente utilizar o projeto e comentar sua experiência.
-
-Veja o arquivo [ROADMAP.md](ROADMAP.md) para ter uma ideia de como o projeto deve evoluir.
-
+Sua ajuda é muito bem-vinda, independente da forma! Confira o arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para conhecer todas as formas de contribuir com o projeto. Por exemplo, [sugerir uma nova funcionalidade](https://github.com/grintex/app-covid-api/issues/new?assignees=&labels=&template=feature_request.md&title=), [reportar um problema/bug](https://github.com/grintex/app-covid-api/issues/new?assignees=&labels=bug&template=bug_report.md&title=), [enviar um pull request](https://github.com/grintex/hacktoberfest/blob/master/docs/tutorial-pull-request.md), ou simplemente utilizar o projeto e comentar sua experiência.
 
 ## Licença
 
@@ -60,10 +93,12 @@ Esse projeto é licenciado nos termos da licença open-source [Apache 2.0](https
 
 Veja todas as alterações desse projeto no arquivo [CHANGELOG.md](CHANGELOG.md).
 
-## Projetos semelhates
+
+## Links
 
 Abaixo está uma lista de links interessantes e projetos similares:
 
-* [Outro projeto](https://github.com/projeto)
-* [Projeto inspiração](https://github.com/projeto)
-* [Ferramenta semelhante](https://github.com/projeto)
+* [covid.saude.gov.br](https://covid.saude.gov.br/)
+* [UFFS](https://www.uffs.edu.br)
+* [Aplicativo Coronavirus - SUS](https://www.gov.br/pt-br/apps/coronavirus-sus)
+* [Github Coronavirus - SUS](https://github.com/spbgovbr/aplicativo-coronavirus-sus)
