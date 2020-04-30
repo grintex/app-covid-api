@@ -1,0 +1,23 @@
+name: ci.uffs.cc
+on:
+  push:
+    branches:
+      - master
+env:
+  PROD_HOST: app-covid.api.uffs.cc
+  PROD_WEB_DIRECTORY: cd ~/app-covid.api.uffs.cc
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Prepare deploy server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ env.PROD_HOST }}
+        username: ${{ secrets.PROD_USERNAME }}
+        password: ${{ secrets.PROD_PASSWORD }}
+        script: |
+          cd ${{ env.PROD_WEB_DIRECTORY }}
+          git pull

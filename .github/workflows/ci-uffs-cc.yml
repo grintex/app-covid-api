@@ -1,0 +1,59 @@
+name: ci.uffs.cc
+on:
+  push:
+    branches:
+      - master
+      - dev
+  pull_request:
+    branches:
+      - master
+      - dev
+env:
+  BUILD_HOST: ci.uffs.cc
+  BUILD_WEB_DIRECTORY: /home/ccuffsci/ci.uffs.cc/app-covid-api
+  BUILD_WEB_URL: https://ci.uffs.cc/app-covid-api
+jobs:
+  build-deploy:
+    name: Build and test Laravel app
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Copy ENV Laravel Configuration for CI
+      run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
+    - name: Install Dependencies (PHP vendors)
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+    - name: Generate key
+      run: php artisan key:generate
+    - name: Create DB and schemas
+      run: |
+        mkdir -p database
+        touch database/database.sqlite
+        php artisan migrate
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      run: vendor/bin/phpunit
+
+    # Deploy to ci.uffs.cc
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+    - name: Prepare deploy server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ env.BUILD_HOST }}
+        username: ${{ secrets.CI_USERNAME }}
+        password: ${{ secrets.CI_PASSWORD }}
+        script: |
+          mkdir -p ${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}
+    - name: Deploy app via SSH
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: ${{ github.workspace }}/
+        remote: ${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}/
+        host: ${{ env.BUILD_HOST }}
+        username: ${{ secrets.CI_USERNAME }}
+        password: ${{ secrets.CI_PASSWORD }}
+    - name: Summary
+      run: |
+        echo "Summary:"
+        echo " Live URL: ${{ env.BUILD_WEB_URL }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}"
