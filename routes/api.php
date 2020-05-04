@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/ping', 'PingController@index')->name('ping.index');
+Route::get('/stats', 'StatsController@index')->name('stats.index');
