@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// This is an "API-only" web-app, meaning that no web routes other
+// than the REST ones exist. Please refer to the api.php file.
+
 Route::get('/', function () {
     return view('welcome');
 });
