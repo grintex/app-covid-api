@@ -8,9 +8,13 @@
 
 Esse repositório contém o código-fonte da API REST utilizada pelo aplicativo móvel *Coronavírus Chapecó* ([repositório Github](https://github.com/grintex/app-covid)), desenvolvido no contexto do [Edital Nº 259/GR/UFFS/2020](https://www.uffs.edu.br/atos-normativos/edital/gr/2020-0259) da [Universidade Federal da Fronteira Sul](https://www.uffs.edu.br), campus Chapecó/SC. O projeto de extensão envolve os cursos de Medicina e Ciência da Computação da UFFS campus Chapecó, sob coordenação da profa. Thais Nascimento Helou (Medicina).
 
-**DEMO:** esse repositório está disponível em produção online em [app-covid.api.uffs.cc](https://app-covid.api.uffs.cc).
+> **LIVE:** [https://app-covid.api.uffs.cc](https://app-covid.api.uffs.cc)
+
+___
 
 > **IMPORTANTE:** esse repositório é dedicado exclusivamente à API REST. Se você está procurando o aplicativo, veja esse [repositório Github](https://github.com/grintex/app-covid).
+
+___
 
 ### Descrição do projeto
 
@@ -32,7 +36,7 @@ A proposta busca a orientação e informação da população sobre medidas de p
 
 **Suporte:**
 
-* [Grintex](https://grintex.uffs.cc) - Grupo de Inovação Tecnológica Experimental da UFFS
+* [Grintex](https://grintex.uffs.cc) - Grupo de Inovação Tecnológica Experimental (UFFS Chapecó/SC)
 
 ## Informações para desenvolvedores
 
