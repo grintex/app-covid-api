@@ -22,7 +22,7 @@ class StatsController extends Controller
      */
     public function index(Request $request)
     {
-        $cacheDurationDays = 1;
+        $cacheDurationDays = 0.5;
         $cacheDurationSeconds = $cacheDurationDays * 24 * 60 * 60;
 
         $items = Cache::remember('stats', $cacheDurationSeconds, function () {
