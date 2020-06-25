@@ -22,7 +22,7 @@ class StatsController extends Controller
      */
     public function index(Request $request)
     {
-        $cacheDurationDays = 0.5;
+        $cacheDurationDays = 0.1;
         $cacheDurationSeconds = $cacheDurationDays * 24 * 60 * 60;
 
         $items = Cache::remember('stats', $cacheDurationSeconds, function () {
@@ -37,6 +37,7 @@ class StatsController extends Controller
             }
 
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 
             $spreadsheet_raw_content = curl_exec($curl);
 
